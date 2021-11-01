@@ -5,7 +5,11 @@ from sklearn import datasets, linear_model
 from sklearn.linear_model import LinearRegression
 import pandas as pd
 from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
 import pandas_ta
+import os
+
+parentDir = os.getcwd()
 
 class test_data():
 
@@ -13,21 +17,7 @@ class test_data():
         self.file_path = file_path
 
     def get_data(self):
-        with open(self.file_path) as f:
-            lines = f.readlines()
-
-            lines[0] = "DateOpenHighLowCloseVolumeOpenInt\n"
-
-            with open(self.file_path, "w") as f:
-                f.writelines(lines)
-                
-        f = open(self.file_path, "r")
-
-        self.df = pd.read_fwf(self.file_path)
-
-        self.df[['Date', 'Open','High', 'Low', 'Close', 'Volume', 'OpenInt']] = self.df.DateOpenHighLowCloseVolumeOpenInt.str.split(",",expand=True,)
-
-        self.df = self.df.drop('DateOpenHighLowCloseVolumeOpenInt', 1)
+        self.df = pd.read_csv(self.file_path)
         
         self.df['Open'] = self.df.Open.astype(float)
         self.df['High'] = self.df.High.astype(float)
@@ -37,7 +27,7 @@ class test_data():
         self.df['Close'] = self.df.Close.astype(float)
         self.df['Date'] = pd.to_datetime(self.df['Date'])
     
-        
+
         self.df.set_index(pd.DatetimeIndex(self.df['Date']), inplace=True)
         self.df = self.df.drop(['Open', 'High', 'Low', 'Volume', 'OpenInt', 'Date'], axis=1)
         
@@ -45,33 +35,32 @@ class test_data():
 
         self.df.ta.ema(Close='Close', length=10, append=True)
         self.df = self.df.iloc[10:] #drop the first 10 rows
-        print(self.df)
+        #print(self.df.shape)
         #self.df.plot(y=['Close','EMA_10'], color=['black','orange'], style='.', linewidth=3)
         # Split data into testing and training sets
         
         
-    def csv_TSLA(self):
-        self.df = pd.read_csv('/Users/maximilianhues/Downloads/TSLA.csv')
-        self.df.set_index(pd.DatetimeIndex(self.df['Date']), inplace=True)
-        self.df = self.df[['Adj Close']]
-        self.df['Adj Close'] = self.df['Adj Close'].astype(float)
-        self.df.ta.ema(close='Adj Close', length=10, append=True)
-        #print(self.df.head(10))
-        self.df = self.df.iloc[10:]
-        #print(self.df.head(10))
-
+    #def csv_TSLA(self):
+    #    self.df = pd.read_csv(parentDir+'/Data/tsla.us.txt')
+    #    self.df.set_index(pd.DatetimeIndex(self.df['Date']), inplace=True)
+    #    self.df = self.df[['Adj Close']]
+    #    self.df['Adj Close'] = self.df['Adj Close'].astype(float)
+    #    self.df.ta.ema(close='Adj Close', length=10, append=True)
+    #    #print(self.df.head(10))
+    #    self.df = self.df.iloc[10:]
+    #    #print(self.df.head(10))
+#
     def linear_regression(self):
         # Split data into testing and training sets
         X_train, X_test, y_train, y_test = train_test_split(self.df[['Close']], self.df[['EMA_10']], test_size=.2)
         #X_train, X_test, y_train, y_test = train_test_split(self.df[['Adj Close']], self.df[['EMA_10']], test_size=.2)
-        print(X_test.describe())
-        print(X_train.describe())
-        # Test set
-        print(X_test.describe())
-        # Training set
-        print(X_train.describe())
-        from sklearn.linear_model import LinearRegression
-        # Create Regression Model
+        #print(X_test.describe())
+        #print(X_train.describe())
+        ## Test set
+        #print(X_test.describe())
+        ## Training set
+        #print(X_train.describe())
+        
         model = LinearRegression()
         # Train the model
         #80% percentage of the data 
@@ -83,9 +72,8 @@ class test_data():
         #give the 20% of x to predict y 
         #Now I can check the 20% of Y with the 20% I have previusoly split and compare them
         y_pred = model.predict(X_test)
-        print(y_pred)
+        #print(y_pred)
         
-        from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
         # Printout relevant metrics
 
         #Here I now compare the real value with the predcition and calculate the absoult error and coefficients
@@ -97,16 +85,18 @@ class test_data():
         #print(X_test) #other half 20%
         #print(y_test) #EMA_10 smaller 20%
         #print(y_train) #EMA_10 bigger 80%
-        print(y_pred)
+        #print(y_pred)
         #plt.scatter(y_pred)
         plt.scatter(X_test, y_test,  color='black')
         plt.plot(X_test, y_pred, color='blue', linewidth=3)
         
         plt.show()
 
+    def ridge():
+        pass
 
-t = test_data(file_path="/Users/maximilianhues/Downloads/aapl.us copy.txt")
+
+t = test_data(file_path=parentDir+"/Data/Stocks/aapl.us.txt")
 t.get_data()
-#t.csv_TSLA()
 t.linear_regression()
  
