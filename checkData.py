@@ -12,17 +12,3 @@ print(col2)
 df3=pd.read_csv('Dataset_main.csv')
 col3=df3.columns
 print(col3)
-
-import seaborn as sb
-import datetime as dt
-import matplotlib.pyplot as plt
-from matplotlib import style
-from mpl_finance import candlestick_ohlc
-import matplotlib.dates as mdates
-import pandas as pd
-
-C_mat = df3.corr()
-fig = plt.figure(figsize = (15,15))
-
-sb.heatmap(C_mat, vmax = .8, square = True)
-plt.show()
