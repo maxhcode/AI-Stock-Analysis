@@ -1,11 +1,11 @@
-from typing import Any
-import numpy as np
+#from typing import Any
+#import numpy as np
 import matplotlib.pyplot as plt
-from sklearn import datasets, linear_model
+#from sklearn import datasets, linear_model
 from sklearn.linear_model import LinearRegression
 import pandas as pd
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_squared_error, r2_score, mean_absolute_error
+from sklearn.metrics import r2_score, mean_absolute_error #mean_squared_error,
 import pandas_ta
 import os
 
