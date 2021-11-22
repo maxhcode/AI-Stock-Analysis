@@ -1,9 +1,6 @@
 # AI-Stock-Analysis
 
-## Folders Structure 
-### There are two types of data in this repository 
-
-## Stock Data
+## Stock Data two types
 The **first one** is in the folder **Data** which contains downloaded Stocks and ETFS until 2017.
 
 The **second one** is in the folder **S&P500_Stock_Data** which contains 500 stocks from 2010 until today.  
