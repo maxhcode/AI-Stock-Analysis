@@ -5,7 +5,7 @@ import pandas as pd
 
 def visualizeTargetStockCandleSticks():
     #Read the Target stock
-    df_target_stock=pd.read_csv('S&P500_Stock_Data/AMZN.csv',index_col=0,parse_dates=True)
+    df_target_stock=pd.read_csv('Max_Hues/S&P500_Stock_Data/AAPL.csv',index_col=0,parse_dates=True)
 
     #This will scnifcantly chrink the data
     #I could also do 10Min instead of 10D

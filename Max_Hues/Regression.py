@@ -13,7 +13,7 @@ class RegressionModelStockPrediction():
 
     def dataPreperationForRegression(self):
         #Reading All stocks and Target stock data
-        df_EverythingTogetherAll=pd.read_csv('StockDataCSVSheetsUSED/EverythingTogetherAll.csv')
+        df_EverythingTogetherAll=pd.read_csv('Max_Hues/StockDataCSVSheetsUSED/EverythingTogetherAll.csv')
 
         #Get Rid of all NULL Values for zeros see print difference 
         #Inplace edits on the current dataframe
@@ -38,7 +38,7 @@ class RegressionModelStockPrediction():
         #'High', 'Low', 'Open', 'Close', 'Volume', 'Adj Close'
         drop_target_stock_columns=col_y_all_target_stock_values
 
-        #Now list with all coolumn names'High', 'Low', 'Open', 'Close', 'Volume', 'Adj Close'
+        #Now list with all column names'High', 'Low', 'Open', 'Close', 'Volume', 'Adj Close'
         drop_target_stock_columns=drop_target_stock_columns.tolist()
 
         #Here the String 'Date' is added to the list
@@ -79,12 +79,12 @@ class RegressionModelStockPrediction():
 
         model()
 
-        regressor = KerasRegressor(build_fn=model, batch_size=16,epochs=10) #16
+        regressor = KerasRegressor(build_fn=model, batch_size=16,epochs=500) #16
 
-        callback=tf.keras.callbacks.ModelCheckpoint(filepath='SavedAIStockModels/Regressor_model.h5',monitor='mean_absolute_error',verbose=0,save_best_only=True,save_weights_only=False,mode='auto')
+        callback=tf.keras.callbacks.ModelCheckpoint(filepath='Max_Hues/SavedAIStockModels/Regressor_model.h5',monitor='mean_absolute_error',verbose=0,save_best_only=True,save_weights_only=False,mode='auto')
 
-        es = EarlyStopping(monitor='val_loss', mode='min')
-        results=regressor.fit(X_train,y_train, callbacks=[es, callback])
+        #es = EarlyStopping(monitor='val_loss', mode='min')
+        results=regressor.fit(X_train,y_train, callbacks=[callback])
 
         #All Target Stock Prices 'High', 'Low', 'Open', 'Close', 'Volume', 'Adj Close'
         y_target_stock_prediction=regressor.predict(X_test)

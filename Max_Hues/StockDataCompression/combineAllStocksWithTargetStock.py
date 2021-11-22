@@ -1,9 +1,9 @@
 import pandas as pd
 
 def combineAllStocksWithTargetStock():
-	df_TargetStockWithAllValues=pd.read_csv('StockDataCSVSheetsUSED/TargetStockWithAllValues.csv',index_col='Date')
-	df_target_stock=pd.read_csv('S&P500_Stock_Data/AMZN.csv')
-	df_AllStocksTogetherAdjustedClose=pd.read_csv('StockDataCSVSheetsUSED/AllStocksTogetherAdjustedClose.csv',index_col='Date')
+	df_TargetStockWithAllValues=pd.read_csv('Max_Hues/StockDataCSVSheetsUSED/TargetStockWithAllValues.csv',index_col='Date')
+	df_target_stock=pd.read_csv('Max_Hues/S&P500_Stock_Data/AAPL.csv')
+	df_AllStocksTogetherAdjustedClose=pd.read_csv('Max_Hues/StockDataCSVSheetsUSED/AllStocksTogetherAdjustedClose.csv',index_col='Date')
 	
 	#Creates an Array for Dates for Target Stock
 	Dates=[]
@@ -21,7 +21,7 @@ def combineAllStocksWithTargetStock():
 
 	df_new['Date']=Dates
 
-	df_new.to_csv('StockDataCSVSheetsUSED/EverythingTogetherAll.csv',index=False)
+	df_new.to_csv('Max_Hues/StockDataCSVSheetsUSED/EverythingTogetherAll.csv',index=False)
 
 combineAllStocksWithTargetStock()
 

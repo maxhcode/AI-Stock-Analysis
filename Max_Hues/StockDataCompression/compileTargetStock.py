@@ -2,7 +2,7 @@ import pandas as pd
 
 def complieTargetStock():
     #Reading Target Stock in a dataframe 
-    df=pd.read_csv('S&P500_Stock_Data/AMZN.csv',index_col=0,parse_dates=True)
+    df=pd.read_csv('Max_Hues/S&P500_Stock_Data/AAPL.csv',index_col=0,parse_dates=True)
 
     #Adds 'Moving_av' as a column to the df dataframe
     #Which is the 50 day moving average
@@ -35,11 +35,11 @@ def complieTargetStock():
 
     print(df)
     #Exporting all the Target stock data to a csv 
-    df.to_csv("StockDataCSVSheetsUSED/TargetStockWithAllValues.csv",index=False)
+    df.to_csv("Max_Hues/StockDataCSVSheetsUSED/TargetStockWithAllValues.csv",index=False)
     
     #########ADDING DATES############
     
-    df1=pd.read_csv('S&P500_Stock_Data/AMZN.csv')
+    df1=pd.read_csv('Max_Hues/S&P500_Stock_Data/AAPL.csv')
     print(df1.columns)
 
     Dates=[]
@@ -48,9 +48,9 @@ def complieTargetStock():
         Dates.append(df1.iloc[i]['Date'])
         i+=1
 
-    df2=pd.read_csv('StockDataCSVSheetsUSED/TargetStockWithAllValues.csv')
+    df2=pd.read_csv('Max_Hues/StockDataCSVSheetsUSED/TargetStockWithAllValues.csv')
     df2['Date']=Dates
     print(df2.columns)
-    df2.to_csv("StockDataCSVSheetsUSED/TargetStockWithAllValues.csv",index=False)
+    df2.to_csv("Max_Hues/StockDataCSVSheetsUSED/TargetStockWithAllValues.csv",index=False)
 
 complieTargetStock()

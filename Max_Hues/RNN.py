@@ -13,7 +13,7 @@ from tensorflow.keras.layers import Dropout
 class RNNModelStockPrediction():
     def dataSet1PreperationForRNN(self):
         ####Reading Target Stock with all values and new values####
-        df_TargetStockWithAllValues=pd.read_csv('StockDataCSVSheetsUSED/TargetStockWithAllValues.csv')
+        df_TargetStockWithAllValues=pd.read_csv('Max_Hues/StockDataCSVSheetsUSED/TargetStockWithAllValues.csv')
 
         ####DROP DATE from df_TargetStockWithAllValues####
         self.df_TargetStockWithAllValuesWithoutDates=df_TargetStockWithAllValues.drop(['Date'],axis=1)
@@ -105,14 +105,14 @@ class RNNModelStockPrediction():
 
         #Execute RNN Model and run it 
 
-        callback=tf.keras.callbacks.ModelCheckpoint(filepath='SavedAIStockModels/RNN_model.h5',
+        callback=tf.keras.callbacks.ModelCheckpoint(filepath='Max_Hues/SavedAIStockModels/RNN_model.h5',
                                                 monitor='mean_squared_error',
                                                 verbose=0,
                                                 save_best_only=True,
                                                 save_weights_only=False,
                                                 mode='auto',
                                                 save_freq='epoch')
-        RNN_model.fit(self.X_train, self.y_train, epochs = 2, batch_size = 32,callbacks=[callback])
+        RNN_model.fit(self.X_train, self.y_train, epochs = 2000, batch_size = 32,callbacks=[callback])
         #Was set to 2000 epochs
         #batch size 32
         self.dataSet2PreperationForRNN()

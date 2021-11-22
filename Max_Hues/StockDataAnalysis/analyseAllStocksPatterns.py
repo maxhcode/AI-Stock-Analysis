@@ -4,7 +4,7 @@ import pandas as pd
 
 def analyseAllStocksPatterns():
     #Reading all Stock data and Taregt stock file
-    df_everything_together_all=pd.read_csv('StockDataCSVSheetsUSED/EverythingTogetherAll.csv')
+    df_everything_together_all=pd.read_csv('Max_Hues/StockDataCSVSheetsUSED/EverythingTogetherAll.csv')
 
     #PLOT
     #With corr() Any na values are automatically excluded. 

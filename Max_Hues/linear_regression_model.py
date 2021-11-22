@@ -96,7 +96,7 @@ class test_data():
         pass
 
 
-t = test_data(file_path=parentDir+"/Data/Stocks/aapl.us.txt")
+t = test_data(file_path=parentDir+"/Max_Hues/Data/Stocks/aapl.us.txt")
 t.get_data()
 t.linear_regression()
  
