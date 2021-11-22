@@ -5,7 +5,7 @@ import pickle
 #This is creating a file which is moving all of the Adj Close Data into one column for each stock
 #rename the Adj Close of each stock as the corresponding stock ticker
 #Include it in the feature set
-#In this case AAPL ticker Apple is the target stock here
+#In this case GOOG ticker Google is the target stock here
 def compileAllStocksTogetherInOneCSV():
 	with open("Max_Hues/Get(S&P500)_Stock_Tickers/S&P500_Tickers.pickle",'rb') as SANDP500_Tickers:
 			stock_tickers=pickle.load(SANDP500_Tickers)
@@ -14,9 +14,9 @@ def compileAllStocksTogetherInOneCSV():
 	main_all_stocks_together_df=pd.DataFrame()
 
 	for count,ticker in enumerate(stock_tickers):
-		#If Apple is in ticker continue and not added to the csv or dataframe
+		#If Google is in ticker continue and not added to the csv or dataframe
 		#This is the choosen stock
-		if 'AAPL' in ticker:
+		if 'GOOG' in ticker:
 			continue
 		#If ticker does not exitst then continue 
 		if not os.path.exists('Max_Hues/S&P500_Stock_Data/{}.csv'.format(ticker)):

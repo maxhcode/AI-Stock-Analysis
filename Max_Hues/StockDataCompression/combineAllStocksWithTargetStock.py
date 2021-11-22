@@ -2,7 +2,7 @@ import pandas as pd
 
 def combineAllStocksWithTargetStock():
 	df_TargetStockWithAllValues=pd.read_csv('Max_Hues/StockDataCSVSheetsUSED/TargetStockWithAllValues.csv',index_col='Date')
-	df_target_stock=pd.read_csv('Max_Hues/S&P500_Stock_Data/AAPL.csv')
+	df_target_stock=pd.read_csv('Max_Hues/S&P500_Stock_Data/GOOG.csv')
 	df_AllStocksTogetherAdjustedClose=pd.read_csv('Max_Hues/StockDataCSVSheetsUSED/AllStocksTogetherAdjustedClose.csv',index_col='Date')
 	
 	#Creates an Array for Dates for Target Stock

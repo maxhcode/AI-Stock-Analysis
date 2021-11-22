@@ -2,7 +2,7 @@ import pandas as pd
 
 def complieTargetStock():
     #Reading Target Stock in a dataframe 
-    df=pd.read_csv('Max_Hues/S&P500_Stock_Data/AAPL.csv',index_col=0,parse_dates=True)
+    df=pd.read_csv('Max_Hues/S&P500_Stock_Data/GOOG.csv',index_col=0,parse_dates=True)
 
     #Adds 'Moving_av' as a column to the df dataframe
     #Which is the 50 day moving average
@@ -39,7 +39,7 @@ def complieTargetStock():
     
     #########ADDING DATES############
     
-    df1=pd.read_csv('Max_Hues/S&P500_Stock_Data/AAPL.csv')
+    df1=pd.read_csv('Max_Hues/S&P500_Stock_Data/GOOG.csv')
     print(df1.columns)
 
     Dates=[]
