@@ -40,5 +40,4 @@ Those folders are quite self-explanatory, and the StockDataCSVSheetsUSED just sa
 
 ## 6.After following the readme file in order to execute chosen Machine Learning Model
 **linear_regression_model.py** which uses the not scraped stock data, which is the data in txt files. For the model, it uses linear regression as a model and then makes a prediction. It's quite an old file and quite messy.
-**Regession.py** is a neural network model which is currently using 10 epochs for a quick check, but I would recommend using 2000 epochs to get real results. I am currently using a batch size of 16, which worked pretty well compared to other sizes that I have tried.
 **RNN.py** is a recurrent neural network model which is currently using 2 epochs for a quick check, but I would also recommend using 2000 epochs to get real results. I am currently using a batch size of 32, which worked pretty well compared to other sizes that I have tried.
